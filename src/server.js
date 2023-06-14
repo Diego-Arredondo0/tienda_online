@@ -6,13 +6,13 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 const fileupload = require("express-fileupload")
-
+const {PORT} = process.env;
 // Initializations
 const app = express();
 require('./config/passport');
 
 // Settings
-app.set('port', process.env.PORT || 4000);
+app.set('port', PORT || 4000);
 app.set('views', path.join(__dirname, "views"));
 app.engine('.hbs', exphbs.engine({
     defaultLayout: 'main',
