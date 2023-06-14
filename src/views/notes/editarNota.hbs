@@ -1,0 +1,26 @@
+<div class="col-md-6 mx-auto">
+    <div class="card text-center">
+        <div class="card-header">
+            <h3>Modificar Producto</h3>
+        </div>
+        <div class="card-body">
+            <form action="/notes/edit/{{notaEditar.id}}?_method=PUT" method="POST">
+                <input type="hidden" name="_method" value="PUT">
+                <div class="form-group p-1">
+                    <input type="text" name="titulo" class="form-control" value="{{notaEditar.titulo}}" autofocus>
+                </div>
+                <div class="form-group p-1">
+                    <textarea name="descripcion" class="form-control">{{notaEditar.descripcion}}</textarea>
+                </div>
+                <div class="form-group p-1">
+                    <input type="text" name="precio" class="form-control" value="{{notaEditar.precio}}" autofocus>
+                </div>
+                <div class="form-group p-1">
+                    <button class="btn btn-warning col-12" type="submit">
+                        Editar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>    

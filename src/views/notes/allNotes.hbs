@@ -1,0 +1,31 @@
+<div class="row">
+
+    {{#each notes}}
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title d-flex justify-content-between align-items-center">
+                        {{ titulo }} 
+                        {{#if ../user.esAdmin}}
+                        <a href="/notes/edit/{{_id}}"><i class="fas fa-edit"></i></a>
+                        {{/if}}
+                        
+                    </h4>
+                    <p>{{descripcion}}</p>
+                    <p>{{precio}}</p>
+                    <img src="{{imagenURL}}" style="width:100%">
+                    {{#if ../user.esAdmin}}
+                    <form action="/notes/delete/{{_id}}?_method=DELETE" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger col-12 btn-sm">Eliminar</button>
+                    </form>
+                    {{/if}}
+                    <form action="/notes/buy/{{_id}}" method="POST">
+                    <input type="hidden" value="{{_id}}">
+                        <button type="submit" class="btn btn-success col-12 btn-sm">Comprar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
