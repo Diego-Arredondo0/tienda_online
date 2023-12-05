@@ -10,7 +10,9 @@ const {
     updateNote,
     deleteNote,
     buy,
-    renderCompras
+    renderCompras,
+    agregarInventario,
+    agregarPDF
 } = require("../controllers/notes.controller");
 
 const { isLogged } = require("../helpers/auth");
@@ -24,6 +26,7 @@ router.get("/notes/edit/:id", isLogged, renderEditForm);
 
 router.put("/notes/edit/:id", isLogged, updateNote);
 router.post("/notes/buy/:id", isLogged, buy);
+router.post("/notes/agregarinventario/:id", isLogged, agregarInventario);
 router.delete("/notes/delete/:id", isLogged, deleteNote);
-
+router.get("/ver-pdf", isLogged, agregarPDF)
 module.exports = router;

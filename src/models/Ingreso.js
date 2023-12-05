@@ -1,6 +1,6 @@
 const {Schema, model, Model} = require('mongoose');
 
-const CompraSchema = new Schema({
+const IngresoSchema = new Schema({
     producto: {
         type: String,
         required: true
@@ -18,4 +18,4 @@ const CompraSchema = new Schema({
     timestamps: true
 })
 
-module.exports = model('Compra', CompraSchema);
+module.exports = model('Ingreso', IngresoSchema);

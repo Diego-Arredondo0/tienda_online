@@ -1,7 +1,7 @@
 <div class="row">
 
     {{#each notes}}
-        <div class="col-md-4">
+        <div class="col-md-4 mt-2">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title d-flex justify-content-between align-items-center">
@@ -11,19 +11,30 @@
                         {{/if}}
                         
                     </h4>
-                    <p>{{descripcion}}</p>
-                    <p>{{precio}}</p>
+                    <p0>{{descripcion}}</p>
+                    <p>Precio: {{precio}}</p>
+                    <p>Inventario: {{inventario}}</p>
                     <img src="{{imagenURL}}" style="width:100%">
                     {{#if ../user.esAdmin}}
                     <form action="/notes/delete/{{_id}}?_method=DELETE" method="POST">
                     <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" class="btn btn-danger col-12 btn-sm">Eliminar</button>
                     </form>
-                    {{/if}}
+                    {{/if}} 
+                    <p class="mt-2">Comprar:</p>
                     <form action="/notes/buy/{{_id}}" method="POST">
-                    <input type="hidden" value="{{_id}}">
-                        <button type="submit" class="btn btn-success col-12 btn-sm">Comprar</button>
+                        <input type="number" name="cantidad" class="form-control" autofocus>
+                        <input type="hidden" value="{{_id}}">
+                        <button type="submit" class="btn btn-success col-12 btn-sm mt-1">Comprar</button>
                     </form>
+                    {{#if ../user.esAdmin}}
+                    <p class="mt-2">Agregar inventario:</p>
+                    <form action="/notes/agregarinventario/{{_id}}" method="POST">
+                        <input type="number" name="cantidad" class="form-control" autofocus>
+                        <input type="hidden" value="{{_id}}">
+                        <button type="submit" class="btn btn-warning col-12 btn-sm mt-1">Agregar</button>
+                    </form>
+                    {{/if}} 
                 </div>
             </div>
         </div>

@@ -16,6 +16,10 @@ const NoteSchema = new Schema({
     imagenURL: {
         type : String,
         required : true
+    },
+    inventario: {
+        type: Number,
+        required: false
     }
 }, {
     timestamps: true
