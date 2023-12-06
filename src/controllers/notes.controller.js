@@ -19,7 +19,7 @@ notesCtrl.renderNoteForm = (req, res) => {
 }
 
 notesCtrl.createNewNote = async (req, res) => {
-    const { titulo, descripcion, precio } = req.body;
+    const { titulo, descripcion, precio, inventario } = req.body;
     console.log(req.files)
     let imagenURL = "";
 
@@ -29,7 +29,7 @@ notesCtrl.createNewNote = async (req, res) => {
         await fs.remove(req.files.image.tempFilePath);
         imagenURL = result.secure_url;
     }
-    const newNote = new Note({ titulo, descripcion, precio: parseInt(precio), imagenURL });
+    const newNote = new Note({ titulo, descripcion, precio: parseInt(precio), inventario, imagenURL });
     await newNote.save();
     req.flash('mensajeExito', 'El producto se agrego correctamente');
     res.redirect('/notes');
@@ -136,7 +136,7 @@ notesCtrl.agregarPDF = async (req, res) => {
 }
 
 notesCtrl.renderCompras = async (req, res) => {
-    const compras = await Compra.find();
+    const compras = await Compra.find({usuario:req.user.nombre});
     console.log(compras)
 
     res.render('notes/todasCompras', { compras });
